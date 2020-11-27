@@ -29,6 +29,7 @@ class Player < Game
 
   def show_map
     map.each { |arr| p arr }
+    'Next Turn!'
   end
 
   def run(int)
@@ -44,7 +45,6 @@ class Player < Game
       end
       i += 1
     end
-    map
   end
 
   def hor_wincon(i, j)
@@ -52,7 +52,7 @@ class Player < Game
   end
 
   def ver_wincon(i, j)
-    (map[i][j] == token) && (map[i][j + 1] == token) && (map[i][j + 3] == token) && (map[i][j + 3] == token)
+    (map[i][j] == token) && (map[i][j + 1] == token) && (map[i][j + 2] == token) && (map[i][j + 3] == token)
   end
 
   def diagonal_left_wincon(i, j)
@@ -124,6 +124,6 @@ class Player < Game
 
   def game_over
     puts "#{name} wins!"
-    self.map = Array.new(42).each_slice(6).to_a
+    Game.grid = Array.new(42).each_slice(6).to_a
   end
 end
